@@ -141,6 +141,10 @@ The API includes proper error handling for:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+## CI/CD Pipeline  
+This project uses GitHub Actions for Continuous Integration (CI).  
+
+
 ## Support
 
 For support, please open an issue in the GitHub repository.
