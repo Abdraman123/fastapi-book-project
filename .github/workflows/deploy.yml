@@ -1,0 +1,32 @@
+name: Deploy FastAPI App
+
+on:
+  push:
+    branches:
+      - main  # Deploy when changes are pushed to main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install Dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Deploy Application
+        run: |
+          # Stop existing container (if any)
+          docker stop fastapi_app || true
+          docker rm fastapi_app || true
+          
+          # Run a new container
+          docker run -d --name fastapi_app -p 8000:8000 fastapi-app-image
