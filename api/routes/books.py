@@ -1,4 +1,4 @@
-
+from fastapi import FastAPI
 from typing import OrderedDict
 
 from fastapi import APIRouter, status, HTTPException
@@ -6,6 +6,7 @@ from fastapi.responses import JSONResponse
 
 from api.db.schemas import Book, Genre, InMemoryDB
 
+app = FastAPI()
 router = APIRouter()
 
 db = InMemoryDB()
