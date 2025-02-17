@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+
 from typing import OrderedDict
 
 from fastapi import APIRouter, status, HTTPException
@@ -6,7 +6,6 @@ from fastapi.responses import JSONResponse
 
 from api.db.schemas import Book, Genre, InMemoryDB
 
-app = FastAPI()
 router = APIRouter()
 
 db = InMemoryDB()
@@ -74,6 +73,6 @@ async def delete_book(book_id: int) -> None:
     return JSONResponse(status_code=status.HTTP_204_NO_CONTENT, content=None)
 
 
-@app.get("/")
-async def root():
+@router.get("/")
+async def read_root():
     return {"message": "FastAPI is running!"}
